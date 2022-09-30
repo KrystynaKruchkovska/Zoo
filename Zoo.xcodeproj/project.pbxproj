@@ -7,23 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E58F99C228E6EE9D00D46A06 /* ZooListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99C128E6EE9B00D46A06 /* ZooListFlowCoordinator.swift */; };
+		E58F99C428E6EEF300D46A06 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99C328E6EEF300D46A06 /* AppFlowCoordinator.swift */; };
+		E58F99C628E6F66900D46A06 /* ZooListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99C528E6F66900D46A06 /* ZooListViewController.swift */; };
+		E58F99CA28E6FB8300D46A06 /* ZooListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99C928E6FB8300D46A06 /* ZooListView.swift */; };
+		E58F99CD28E6FCB000D46A06 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99CC28E6FCB000D46A06 /* Animal.swift */; };
+		E58F99D028E6FE1B00D46A06 /* AnimalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99CF28E6FE1B00D46A06 /* AnimalTableViewCell.swift */; };
 		E5B78BFE28E6E1AB0028F457 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B78BFD28E6E1AB0028F457 /* AppDelegate.swift */; };
 		E5B78C0028E6E1AB0028F457 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B78BFF28E6E1AB0028F457 /* SceneDelegate.swift */; };
 		E5B78C0228E6E1AB0028F457 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B78C0128E6E1AB0028F457 /* ViewController.swift */; };
-		E5B78C0528E6E1AB0028F457 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5B78C0328E6E1AB0028F457 /* Main.storyboard */; };
 		E5B78C0728E6E1B00028F457 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5B78C0628E6E1B00028F457 /* Assets.xcassets */; };
 		E5B78C0A28E6E1B00028F457 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5B78C0828E6E1B00028F457 /* LaunchScreen.storyboard */; };
+		E5B78C1528E6E3BD0028F457 /* AppFlowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B78C1428E6E3BD0028F457 /* AppFlowCoordinatorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E58F99C128E6EE9B00D46A06 /* ZooListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZooListFlowCoordinator.swift; sourceTree = "<group>"; };
+		E58F99C328E6EEF300D46A06 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		E58F99C528E6F66900D46A06 /* ZooListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZooListViewController.swift; sourceTree = "<group>"; };
+		E58F99C928E6FB8300D46A06 /* ZooListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZooListView.swift; sourceTree = "<group>"; };
+		E58F99CC28E6FCB000D46A06 /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
+		E58F99CF28E6FE1B00D46A06 /* AnimalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalTableViewCell.swift; sourceTree = "<group>"; };
 		E5B78BFA28E6E1AB0028F457 /* Zoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B78BFD28E6E1AB0028F457 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5B78BFF28E6E1AB0028F457 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E5B78C0128E6E1AB0028F457 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E5B78C0428E6E1AB0028F457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E5B78C0628E6E1B00028F457 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5B78C0928E6E1B00028F457 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5B78C0B28E6E1B00028F457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5B78C1428E6E3BD0028F457 /* AppFlowCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinatorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +49,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E58F99C728E6FAC200D46A06 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E58F99C828E6FB0100D46A06 /* ZooListScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		E58F99C828E6FB0100D46A06 /* ZooListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E58F99CE28E6FDEF00D46A06 /* Views */,
+				E58F99C528E6F66900D46A06 /* ZooListViewController.swift */,
+			);
+			path = ZooListScreen;
+			sourceTree = "<group>";
+		};
+		E58F99CB28E6FC9B00D46A06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E58F99CC28E6FCB000D46A06 /* Animal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E58F99CE28E6FDEF00D46A06 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E58F99C928E6FB8300D46A06 /* ZooListView.swift */,
+				E58F99CF28E6FE1B00D46A06 /* AnimalTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E5B78BF128E6E1AB0028F457 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +102,27 @@
 		E5B78BFC28E6E1AB0028F457 /* Zoo */ = {
 			isa = PBXGroup;
 			children = (
+				E58F99CB28E6FC9B00D46A06 /* Models */,
+				E58F99C728E6FAC200D46A06 /* Screens */,
+				E5B78C1328E6E3980028F457 /* Navigation */,
 				E5B78BFD28E6E1AB0028F457 /* AppDelegate.swift */,
 				E5B78BFF28E6E1AB0028F457 /* SceneDelegate.swift */,
 				E5B78C0128E6E1AB0028F457 /* ViewController.swift */,
-				E5B78C0328E6E1AB0028F457 /* Main.storyboard */,
 				E5B78C0628E6E1B00028F457 /* Assets.xcassets */,
 				E5B78C0828E6E1B00028F457 /* LaunchScreen.storyboard */,
 				E5B78C0B28E6E1B00028F457 /* Info.plist */,
 			);
 			path = Zoo;
+			sourceTree = "<group>";
+		};
+		E5B78C1328E6E3980028F457 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E5B78C1428E6E3BD0028F457 /* AppFlowCoordinatorProtocol.swift */,
+				E58F99C328E6EEF300D46A06 /* AppFlowCoordinator.swift */,
+				E58F99C128E6EE9B00D46A06 /* ZooListFlowCoordinator.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +185,6 @@
 			files = (
 				E5B78C0A28E6E1B00028F457 /* LaunchScreen.storyboard in Resources */,
 				E5B78C0728E6E1B00028F457 /* Assets.xcassets in Resources */,
-				E5B78C0528E6E1AB0028F457 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,22 +196,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5B78C0228E6E1AB0028F457 /* ViewController.swift in Sources */,
+				E58F99C228E6EE9D00D46A06 /* ZooListFlowCoordinator.swift in Sources */,
+				E5B78C1528E6E3BD0028F457 /* AppFlowCoordinatorProtocol.swift in Sources */,
+				E58F99D028E6FE1B00D46A06 /* AnimalTableViewCell.swift in Sources */,
+				E58F99C428E6EEF300D46A06 /* AppFlowCoordinator.swift in Sources */,
 				E5B78BFE28E6E1AB0028F457 /* AppDelegate.swift in Sources */,
+				E58F99CA28E6FB8300D46A06 /* ZooListView.swift in Sources */,
+				E58F99C628E6F66900D46A06 /* ZooListViewController.swift in Sources */,
 				E5B78C0028E6E1AB0028F457 /* SceneDelegate.swift in Sources */,
+				E58F99CD28E6FCB000D46A06 /* Animal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E5B78C0328E6E1AB0028F457 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E5B78C0428E6E1AB0028F457 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E5B78C0828E6E1B00028F457 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V8ZG3WLBMM;
+				DEVELOPMENT_TEAM = 4NP83W27WQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -295,12 +351,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.krystynakruchkovska.Zoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kruchkovskakr.Zoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -323,12 +380,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.krystynakruchkovska.Zoo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kruchkovskakr.Zoo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
