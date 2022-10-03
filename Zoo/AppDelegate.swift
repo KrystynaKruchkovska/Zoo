@@ -11,18 +11,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var appFlowCoordinator: FlowCoordinatorProtocol?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        appFlowCoordinator = AppFlowCoordinator()
-//        let window = UIWindow(frame: UIScreen.main.bounds)
-//        self.window = window
-//        self.window?.rootViewController = ZooListViewController()
-////        appFlowCoordinator?.rootViewController
-//        self.window?.makeKeyAndVisible()
-//        
-//        appFlowCoordinator?.start(animated: false)
         return true
     }
 
