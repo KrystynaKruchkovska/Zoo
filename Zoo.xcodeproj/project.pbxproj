@@ -7,12 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E52EF73D28EACC3200FEF7FD /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF73C28EACC3200FEF7FD /* ImageDownloader.swift */; };
+		E52EF73F28EACCA200FEF7FD /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF73E28EACCA200FEF7FD /* ImageDownloader.swift */; };
+		E52EF74128EACD0900FEF7FD /* ImageCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF74028EACD0900FEF7FD /* ImageCacheProtocol.swift */; };
+		E52EF74528EAE38100FEF7FD /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52EF74428EAE38100FEF7FD /* ImageCache.swift */; };
 		E58F99C228E6EE9D00D46A06 /* ZooListFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99C128E6EE9B00D46A06 /* ZooListFlowCoordinator.swift */; };
 		E58F99C428E6EEF300D46A06 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99C328E6EEF300D46A06 /* AppFlowCoordinator.swift */; };
 		E58F99C628E6F66900D46A06 /* ZooListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99C528E6F66900D46A06 /* ZooListViewController.swift */; };
 		E58F99CA28E6FB8300D46A06 /* ZooListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99C928E6FB8300D46A06 /* ZooListView.swift */; };
 		E58F99CD28E6FCB000D46A06 /* Animal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99CC28E6FCB000D46A06 /* Animal.swift */; };
 		E58F99D028E6FE1B00D46A06 /* AnimalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99CF28E6FE1B00D46A06 /* AnimalTableViewCell.swift */; };
+		E58F99D228E7012400D46A06 /* AnimalListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99D128E7012400D46A06 /* AnimalListViewModel.swift */; };
+		E58F99D528E7032900D46A06 /* ZooEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99D428E7032900D46A06 /* ZooEndpoint.swift */; };
+		E58F99D728E711A200D46A06 /* NetworkingEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99D628E711A200D46A06 /* NetworkingEngine.swift */; };
+		E58F99D928E7122A00D46A06 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99D828E7122A00D46A06 /* NetworkError.swift */; };
+		E58F99DB28E712B000D46A06 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99DA28E712B000D46A06 /* Endpoint.swift */; };
+		E58F99DE28E7134C00D46A06 /* HttpRequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F99DD28E7134C00D46A06 /* HttpRequestMethod.swift */; };
 		E5B78BFE28E6E1AB0028F457 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B78BFD28E6E1AB0028F457 /* AppDelegate.swift */; };
 		E5B78C0028E6E1AB0028F457 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B78BFF28E6E1AB0028F457 /* SceneDelegate.swift */; };
 		E5B78C0228E6E1AB0028F457 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B78C0128E6E1AB0028F457 /* ViewController.swift */; };
@@ -22,12 +32,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E52EF73C28EACC3200FEF7FD /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		E52EF73E28EACCA200FEF7FD /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		E52EF74028EACD0900FEF7FD /* ImageCacheProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheProtocol.swift; sourceTree = "<group>"; };
+		E52EF74428EAE38100FEF7FD /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		E58F99C128E6EE9B00D46A06 /* ZooListFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZooListFlowCoordinator.swift; sourceTree = "<group>"; };
 		E58F99C328E6EEF300D46A06 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		E58F99C528E6F66900D46A06 /* ZooListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZooListViewController.swift; sourceTree = "<group>"; };
 		E58F99C928E6FB8300D46A06 /* ZooListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZooListView.swift; sourceTree = "<group>"; };
 		E58F99CC28E6FCB000D46A06 /* Animal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animal.swift; sourceTree = "<group>"; };
 		E58F99CF28E6FE1B00D46A06 /* AnimalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalTableViewCell.swift; sourceTree = "<group>"; };
+		E58F99D128E7012400D46A06 /* AnimalListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalListViewModel.swift; sourceTree = "<group>"; };
+		E58F99D428E7032900D46A06 /* ZooEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZooEndpoint.swift; sourceTree = "<group>"; };
+		E58F99D628E711A200D46A06 /* NetworkingEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingEngine.swift; sourceTree = "<group>"; };
+		E58F99D828E7122A00D46A06 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		E58F99DA28E712B000D46A06 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		E58F99DD28E7134C00D46A06 /* HttpRequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestMethod.swift; sourceTree = "<group>"; };
 		E5B78BFA28E6E1AB0028F457 /* Zoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B78BFD28E6E1AB0028F457 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5B78BFF28E6E1AB0028F457 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,8 +99,33 @@
 			children = (
 				E58F99C928E6FB8300D46A06 /* ZooListView.swift */,
 				E58F99CF28E6FE1B00D46A06 /* AnimalTableViewCell.swift */,
+				E58F99D128E7012400D46A06 /* AnimalListViewModel.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E58F99D328E702E800D46A06 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E58F99DC28E712F000D46A06 /* Abstractions */,
+				E58F99D428E7032900D46A06 /* ZooEndpoint.swift */,
+				E58F99D628E711A200D46A06 /* NetworkingEngine.swift */,
+				E52EF73E28EACCA200FEF7FD /* ImageDownloader.swift */,
+				E52EF74428EAE38100FEF7FD /* ImageCache.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E58F99DC28E712F000D46A06 /* Abstractions */ = {
+			isa = PBXGroup;
+			children = (
+				E58F99DA28E712B000D46A06 /* Endpoint.swift */,
+				E58F99D828E7122A00D46A06 /* NetworkError.swift */,
+				E58F99DD28E7134C00D46A06 /* HttpRequestMethod.swift */,
+				E52EF73C28EACC3200FEF7FD /* ImageDownloader.swift */,
+				E52EF74028EACD0900FEF7FD /* ImageCacheProtocol.swift */,
+			);
+			path = Abstractions;
 			sourceTree = "<group>";
 		};
 		E5B78BF128E6E1AB0028F457 = {
@@ -102,6 +147,7 @@
 		E5B78BFC28E6E1AB0028F457 /* Zoo */ = {
 			isa = PBXGroup;
 			children = (
+				E58F99D328E702E800D46A06 /* Networking */,
 				E58F99CB28E6FC9B00D46A06 /* Models */,
 				E58F99C728E6FAC200D46A06 /* Screens */,
 				E5B78C1328E6E3980028F457 /* Navigation */,
@@ -196,14 +242,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5B78C0228E6E1AB0028F457 /* ViewController.swift in Sources */,
+				E58F99D928E7122A00D46A06 /* NetworkError.swift in Sources */,
+				E58F99D728E711A200D46A06 /* NetworkingEngine.swift in Sources */,
+				E58F99D528E7032900D46A06 /* ZooEndpoint.swift in Sources */,
+				E58F99DB28E712B000D46A06 /* Endpoint.swift in Sources */,
 				E58F99C228E6EE9D00D46A06 /* ZooListFlowCoordinator.swift in Sources */,
+				E58F99D228E7012400D46A06 /* AnimalListViewModel.swift in Sources */,
 				E5B78C1528E6E3BD0028F457 /* AppFlowCoordinatorProtocol.swift in Sources */,
 				E58F99D028E6FE1B00D46A06 /* AnimalTableViewCell.swift in Sources */,
+				E52EF74128EACD0900FEF7FD /* ImageCacheProtocol.swift in Sources */,
+				E52EF74528EAE38100FEF7FD /* ImageCache.swift in Sources */,
 				E58F99C428E6EEF300D46A06 /* AppFlowCoordinator.swift in Sources */,
+				E52EF73D28EACC3200FEF7FD /* ImageDownloader.swift in Sources */,
 				E5B78BFE28E6E1AB0028F457 /* AppDelegate.swift in Sources */,
 				E58F99CA28E6FB8300D46A06 /* ZooListView.swift in Sources */,
+				E58F99DE28E7134C00D46A06 /* HttpRequestMethod.swift in Sources */,
 				E58F99C628E6F66900D46A06 /* ZooListViewController.swift in Sources */,
 				E5B78C0028E6E1AB0028F457 /* SceneDelegate.swift in Sources */,
+				E52EF73F28EACCA200FEF7FD /* ImageDownloader.swift in Sources */,
 				E58F99CD28E6FCB000D46A06 /* Animal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,7 +428,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V8ZG3WLBMM;
+				DEVELOPMENT_TEAM = 4NP83W27WQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zoo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
