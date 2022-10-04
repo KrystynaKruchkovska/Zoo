@@ -9,12 +9,17 @@ import UIKit
 
 class ZooListView: UIView {
     
+    private var animals: Animals = []
+//    let imageDownloader: ImageDownloaderProtocol
+
     override init(frame: CGRect) {
         super.init(frame: frame)
+//        self.imageDownloader = imageDownloader
         self.backgroundColor = .red
         self.addSubview(zooListTableView)
+        setupTableView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,4 +36,41 @@ class ZooListView: UIView {
         tableView.register(AnimalTableViewCell.self, forCellReuseIdentifier: AnimalTableViewCell.reusableIdentifier)
         return tableView
     }()
+    
+    private func setupTableView() {
+        zooListTableView.dataSource = self
+        zooListTableView.delegate = self
+    }
+    
+    func update(with animals: Animals) {
+        self.animals = animals
+        zooListTableView.reloadData()
+    }
+
+}
+
+extension ZooListView: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return animals.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: AnimalTableViewCell.reusableIdentifier) as? AnimalTableViewCell else {
+            return UITableViewCell()
+        }
+        let animal = animals[indexPath.row]
+        cell.label.text = animal.name
+        if let imgUrl =  URL(string: animal.imageLink) {
+            cell.update(with: imgUrl)
+        }
+        return cell
+
+    }
+    
+    
+}
+
+
+extension ZooListView: UITableViewDelegate {
+    
 }

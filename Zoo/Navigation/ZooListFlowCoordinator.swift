@@ -33,7 +33,7 @@ final class ZooListFlowCoordinator: FlowCoordinatorProtocol {
 
 private extension ZooListFlowCoordinator {
     func showZooListVC(animated: Bool = true) {
-        let zooListVC = ZooListViewController()
+        let zooListVC = ZooListViewController(viewModel: AnimalListViewModel())
 //        viewController.delegate = self
 
         navigationController.setViewControllers([zooListVC], animated: animated)
