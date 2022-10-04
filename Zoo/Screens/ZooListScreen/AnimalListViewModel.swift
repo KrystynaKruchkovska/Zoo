@@ -20,10 +20,10 @@ class AnimalListViewModel: AnimalListViewModelProtocol {
     private (set) var animals = [Animal]()
     private var cancellables = Set<AnyCancellable>()
     private (set) var fetchedAnimals = PassthroughSubject<Animals, Never>()
-    private let networkingEngine =  NetworkingEngine()
-//    var imageDownloader: ImageDownloaderProtocol
+    private let networkingEngine: NetworkingEngineProtocol
     
-    init() {
+    init(networkingEngine: NetworkingEngineProtocol) {
+        self.networkingEngine = networkingEngine
 //        let imageCache = DefaultImageCache()
 //        imageDownloader = ImageDownloader(networkSession: networkingEngine, imageCache: imageCache)
         

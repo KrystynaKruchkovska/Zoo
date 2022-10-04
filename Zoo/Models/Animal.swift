@@ -9,8 +9,8 @@ import Foundation
 
 struct Animal: Codable {
     let name, latinName: String
-    let animalType: AnimalType
-    let activeTime: ActiveTime
+//    let animalType: AnimalType
+//    let activeTime: ActiveTime
     let lengthMin, lengthMax, weightMin, weightMax: String
     let lifespan, habitat, diet, geoRange: String
     let imageLink: String
@@ -19,8 +19,8 @@ struct Animal: Codable {
     enum CodingKeys: String, CodingKey {
         case name
         case latinName = "latin_name"
-        case animalType = "animal_type"
-        case activeTime = "active_time"
+//        case animalType = "animal_type"
+//        case activeTime = "active_time"
         case lengthMin = "length_min"
         case lengthMax = "length_max"
         case weightMin = "weight_min"
@@ -45,8 +45,8 @@ struct Animal: Codable {
         self.geoRange = try container.decode(String.self, forKey: .geoRange)
         self.imageLink = try container.decode(String.self, forKey: .imageLink)
         self.id = try container.decode(Int.self, forKey: .id)
-        self.animalType = try container.decode(AnimalType.self, forKey: .animalType)
-        self.activeTime = try container.decode(ActiveTime.self, forKey: .activeTime)
+//        self.animalType = try container.decode(AnimalType.self, forKey: .animalType)
+//        self.activeTime = try container.decode(ActiveTime.self, forKey: .activeTime)
     }
 }
 

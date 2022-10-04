@@ -9,7 +9,11 @@ import Foundation
 import Combine
 import UIKit
 
-class NetworkingEngine {
+protocol NetworkingEngineProtocol {
+    func request<T:Codable>(endpoint: Endpoint, type: T.Type) -> AnyPublisher<[T], Error>
+}
+
+class NetworkingEngine: NetworkingEngineProtocol {
     
     func request<T:Codable>(endpoint: Endpoint, type: T.Type) -> AnyPublisher<[T], Error> {
         var components = URLComponents()

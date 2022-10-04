@@ -8,9 +8,12 @@
 import UIKit
 
 final class ZooListFlowCoordinator: FlowCoordinatorProtocol {
+    
     let navigationController: UINavigationController
     var rootViewController: UIViewController
     
+    private (set) var dependencyProvider: DependencyProvider
+
     private (set) var currentFlowCoordinator: FlowCoordinatorProtocol?
     
     private (set) var name: String = "Zoo List Flow Coordinator"
@@ -23,9 +26,12 @@ final class ZooListFlowCoordinator: FlowCoordinatorProtocol {
         showZooListVC()
     }
     
-    init(currentFlowCoordinator: FlowCoordinatorProtocol? = nil, navigationController: UINavigationController) {
+    init(currentFlowCoordinator: FlowCoordinatorProtocol? = nil,
+         dependencyProvider: DependencyProvider,
+         navigationController: UINavigationController) {
         self.rootViewController = navigationController
         self.currentFlowCoordinator = currentFlowCoordinator
+        self.dependencyProvider = dependencyProvider
         self.navigationController = navigationController
     }
 }
@@ -33,7 +39,8 @@ final class ZooListFlowCoordinator: FlowCoordinatorProtocol {
 
 private extension ZooListFlowCoordinator {
     func showZooListVC(animated: Bool = true) {
-        let zooListVC = ZooListViewController(viewModel: AnimalListViewModel())
+        let viewModel = AnimalListViewModel(networkingEngine: dependencyProvider.networkingEngine)
+        let zooListVC = ZooListViewController(viewModel: viewModel)
 //        viewController.delegate = self
 
         navigationController.setViewControllers([zooListVC], animated: animated)

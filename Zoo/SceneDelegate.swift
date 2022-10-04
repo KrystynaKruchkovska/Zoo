@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         // Override point for customization after application launch.
-        appFlowCoordinator = AppFlowCoordinator()
+        let defaultDependencyProvider = DependencyProvider()
+        appFlowCoordinator = AppFlowCoordinator(dependencyProvider: defaultDependencyProvider)
         let window = UIWindow(windowScene: scene)
         self.window = window
         self.window?.rootViewController = appFlowCoordinator?.rootViewController
