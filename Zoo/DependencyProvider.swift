@@ -18,8 +18,8 @@ protocol DependencyProviderProtocol: AnyObject {
 /// An default app dependencies provider.
 final class DependencyProvider: DependencyProviderProtocol {
     var networkingEngine: NetworkingEngineProtocol
-    
-
+    var imageDownloader: ImageDownloaderProtocol
+    private var imageCache: ImageCacheProtocol
 //    /// - SeeAlso: `DependencyProvider.productsNetworkController`
 //    let productsNetworkController: ProductsNetworkController
 //
@@ -29,6 +29,8 @@ final class DependencyProvider: DependencyProviderProtocol {
     /// A default initializer for dependency provider.
     init() {
         networkingEngine = NetworkingEngine()
+        imageCache = ImageCache()
+        imageDownloader = ImageDownloader(networkingEngine: networkingEngine, imageCache: imageCache)
 //        let networkSession = URLSession(configuration: .default)
 //        let requestBuilder = DefaultRequestBuilder(scheme: .https, host: "api.bloomandwild.com")
 //        let networkController = DefaultNetworkController(requestBuilder: requestBuilder, session: networkSession)
