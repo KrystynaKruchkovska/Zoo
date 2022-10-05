@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol ZooListViewDelegate: AnyObject {
+    func onDidPullToRefreshData()
+}
+
 class ZooListView: UIView {
     
     private var animals: Animals = []
     private var imageDownloader: ImageDownloaderProtocol?
+    weak var delegate: ZooListViewDelegate? = nil
 //    let imageDownloader: ImageDownloaderProtocol
 
     override init(frame: CGRect) {
@@ -35,18 +40,29 @@ class ZooListView: UIView {
         tableView.rowHeight = 200
         tableView.backgroundColor = .white
         tableView.register(AnimalTableViewCell.self, forCellReuseIdentifier: AnimalTableViewCell.reusableIdentifier)
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.tintColor = .green
         return tableView
     }()
     
     private func setupTableView() {
         zooListTableView.dataSource = self
         zooListTableView.delegate = self
+        zooListTableView.refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     }
     
     func update(with animals: Animals, imageDownloader: ImageDownloaderProtocol) {
         self.animals = animals
         self.imageDownloader = imageDownloader
         zooListTableView.reloadData()
+    }
+    
+    @objc func didPullToRefresh() {
+        delegate?.onDidPullToRefreshData()
+        print("Start refrefhing")
+        DispatchQueue.main.async {
+            self.zooListTableView.refreshControl?.endRefreshing()
+        }
     }
 }
 
@@ -70,5 +86,5 @@ extension ZooListView: UITableViewDataSource {
 }
 
 extension ZooListView: UITableViewDelegate {
-    
+
 }

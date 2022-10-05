@@ -14,7 +14,6 @@ class AnimalTableViewCell: UITableViewCell {
        super.init(style: style, reuseIdentifier: reuseIdentifier)
        self.addSubview(mainStackView)
        progressIndicator.startAnimating()
-
    }
 
        // Configure the view for the selected state

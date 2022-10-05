@@ -16,10 +16,7 @@ protocol ZooListViewControllerDelegate: AnyObject {
 
 final class ZooListViewController: UIViewController {
     weak var delegate: ZooListViewControllerDelegate?
-    
-    private var listView: ZooListView {
-        return view as! ZooListView
-    }
+
     private var viewModel: AnimalListViewModelProtocol
     private var imageDownloader: ImageDownloaderProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -46,6 +43,7 @@ final class ZooListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        customView.delegate = self
         viewModel.fetchAnimals()
         observeFetchedAnimals()
     }
@@ -63,6 +61,10 @@ final class ZooListViewController: UIViewController {
             }
             .store(in: &cancellables)
     }
-    
 }
 
+extension ZooListViewController: ZooListViewDelegate {
+       func onDidPullToRefreshData() {
+           viewModel.fetchAnimals()
+       }
+}
