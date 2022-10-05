@@ -21,10 +21,13 @@ final class ZooListViewController: UIViewController {
         return view as! ZooListView
     }
     private var viewModel: AnimalListViewModelProtocol
+    private var imageDownloader: ImageDownloaderProtocol
     private var cancellables = Set<AnyCancellable>()
     
-    init(viewModel: AnimalListViewModelProtocol) {
+    init(viewModel: AnimalListViewModelProtocol,
+         imageDownloader: ImageDownloaderProtocol) {
         self.viewModel = viewModel
+        self.imageDownloader = imageDownloader
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,7 +55,11 @@ final class ZooListViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { _ in
             } receiveValue: { [weak self] animals in
-                self?.customView.update(with: animals)
+                guard let self = self else {
+                    return
+                }
+                self.customView.update(with: animals,
+                                        imageDownloader: self.imageDownloader)
             }
             .store(in: &cancellables)
     }

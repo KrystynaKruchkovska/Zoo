@@ -40,7 +40,7 @@ final class ZooListFlowCoordinator: FlowCoordinatorProtocol {
 private extension ZooListFlowCoordinator {
     func showZooListVC(animated: Bool = true) {
         let viewModel = AnimalListViewModel(networkingEngine: dependencyProvider.networkingEngine)
-        let zooListVC = ZooListViewController(viewModel: viewModel)
+        let zooListVC = ZooListViewController(viewModel: viewModel, imageDownloader: dependencyProvider.imageDownloader)
 //        viewController.delegate = self
 
         navigationController.setViewControllers([zooListVC], animated: animated)

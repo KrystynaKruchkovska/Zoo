@@ -6,36 +6,46 @@
 //
 
 import UIKit
+import Combine
 
 class ImageDownloader: ImageDownloaderProtocol {
     
     private var runningRequests = [UUID: URLSessionDataTask]()
     private let networkingEngine: NetworkingEngineProtocol
     private let imageCache: ImageCacheProtocol
-    
+    private var cancellables = Set<AnyCancellable>()
+    private (set) var fetchedImage = PassthroughSubject<UIImage, Never>()
+
     init(networkingEngine: NetworkingEngineProtocol,
         imageCache: ImageCacheProtocol) {
         self.networkingEngine = networkingEngine
         self.imageCache = imageCache
     }
-    func download(with url: URL, completionHandler: @escaping (Result<UIImage, Error>) -> Void) -> UUID? {
+    
+    func download(with url: URL) -> UUID? {
         if let image = imageCache.getImage(for: url) {
-           completionHandler(.success(image))
+            self.fetchedImage.send(image)
           return nil
         }
         let uuid = UUID()
-//        let task = networkSession.dataTask(with: url) { data, response, error in
-//            defer { self.runningRequests.removeValue(forKey: uuid) }
-//            if let data = data, let image = UIImage(data: data) {
-//                self.imageCache.setImage(image, for: url)
-//                completionHandler(.success(image))
-//                return
-//            } else {
-//                completionHandler(.failure(.failed))
-//            }
-//        }
-//        task.resume()
-//        runningRequests[uuid] = task
+            networkingEngine.downloadTaskPublisher(with: url)
+                .receive(on: DispatchQueue.main)
+                .sink { completion in
+                    switch completion {
+                    case .failure(let err):
+                        print("Error is \(err.localizedDescription)")
+                    case .finished:
+                        print("Finished")
+                    }
+                }
+                receiveValue: { [weak self] image in
+                    guard let image = image else {
+                        return
+                    }
+                    self?.fetchedImage.send(image)
+                    print("Image\(String(describing: image))")
+                }
+                .store(in: &cancellables)
         return uuid
     }
     
@@ -44,4 +54,9 @@ class ImageDownloader: ImageDownloaderProtocol {
         runningRequests.removeValue(forKey: uuid)
     }
     
+}
+extension ImageDownloader {
+    var num: String {
+        return ""
+    }
 }

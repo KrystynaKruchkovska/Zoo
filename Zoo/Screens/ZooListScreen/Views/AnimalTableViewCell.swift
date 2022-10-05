@@ -1,10 +1,11 @@
 import UIKit
+import Combine
 
 class AnimalTableViewCell: UITableViewCell {
 
-
-//    private var imageDownloader: ImageDownloaderProtocol?
-
+    private var imageDownloader: ImageDownloaderProtocol?
+    private var imageDowloadingID: UUID?
+    private var tokens = Set<AnyCancellable>()
     static var reusableIdentifier: String {
         return String(describing: self)
     }
@@ -24,10 +25,20 @@ class AnimalTableViewCell: UITableViewCell {
        super.layoutSubviews()
        progressIndicator.frame = CGRect(x: imgView.frame.width/2, y: imgView.frame.height/2, width: 20, height: 20)
     }
+    
+    override func prepareForReuse() {
+        imgView.image = nil
+        guard let imageDowloadingID = imageDowloadingID else {
+            return
+        }
+        imageDownloader?.cancelTask(for: imageDowloadingID)
+        progressIndicator.startAnimating()
+    }
 
     lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [imgView, label])
+        let stackView = UIStackView(arrangedSubviews: [label, imgView])
         stackView.axis = .horizontal
+        stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -35,6 +46,8 @@ class AnimalTableViewCell: UITableViewCell {
     var imgView: UIImageView = {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
+        imgView.layer.cornerRadius = 5
+        imgView.clipsToBounds = true
         return imgView
     }()
 
@@ -49,24 +62,25 @@ class AnimalTableViewCell: UITableViewCell {
         return progressIndicator
     }()
 
-    func update(with imageURL: URL) {
-//        self.imageDownloader = imageDownloader
+    func update(with imageURL: URL, imageDownloader: ImageDownloaderProtocol?) {
+        self.imageDownloader = imageDownloader
         downloadImage(with: imageURL)
+        observeFetchedImage()
     }
 }
 
 extension AnimalTableViewCell {
-   func downloadImage(with URL: URL) {
-//       imageDownloader?.download(with: URL, completionHandler: { [weak self] result in
-//           DispatchQueue.main.async {
-//               self?.progressIndicator.stopAnimating()
-//               switch result {
-//               case let .success(image):
-//                   self?.imgView.image = image
-//               case .failure:
-//                   print("ProductTableViewCell:downloadImage - failed to download image")
-//               }
-//           }
-//       })
+   func downloadImage(with url: URL) {
+       imageDowloadingID = imageDownloader?.download(with: url)
    }
+    
+    func observeFetchedImage() {
+        imageDownloader?.fetchedImage
+            .receive(on: RunLoop.main)
+            .sink { [weak self] image in
+                print("HERE", image.description)
+                self?.imageView?.image = image
+            }
+            .store(in: &tokens)
+    }
 }

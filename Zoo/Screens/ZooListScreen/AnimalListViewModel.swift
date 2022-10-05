@@ -41,11 +41,11 @@ class AnimalListViewModel: AnimalListViewModelProtocol {
                     print("Finished")
                 }
             }
-    receiveValue: { [weak self] animals in
-        self?.animals = animals
-        self?.fetchedAnimals.send(animals)
-        print("Animals\(animals)")
-    }
-    .store(in: &cancellables)
+            receiveValue: { [weak self] animals in
+                self?.animals = animals
+                self?.fetchedAnimals.send(animals)
+                print("Animals\(animals)")
+            }
+            .store(in: &cancellables)
     }
 }

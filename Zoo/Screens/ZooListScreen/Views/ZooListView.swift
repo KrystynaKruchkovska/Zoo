@@ -10,6 +10,7 @@ import UIKit
 class ZooListView: UIView {
     
     private var animals: Animals = []
+    private var imageDownloader: ImageDownloaderProtocol?
 //    let imageDownloader: ImageDownloaderProtocol
 
     override init(frame: CGRect) {
@@ -42,11 +43,11 @@ class ZooListView: UIView {
         zooListTableView.delegate = self
     }
     
-    func update(with animals: Animals) {
+    func update(with animals: Animals, imageDownloader: ImageDownloaderProtocol) {
         self.animals = animals
+        self.imageDownloader = imageDownloader
         zooListTableView.reloadData()
     }
-
 }
 
 extension ZooListView: UITableViewDataSource {
@@ -61,15 +62,12 @@ extension ZooListView: UITableViewDataSource {
         let animal = animals[indexPath.row]
         cell.label.text = animal.name
         if let imgUrl =  URL(string: animal.imageLink) {
-            cell.update(with: imgUrl)
+            cell.update(with: imgUrl, imageDownloader: imageDownloader)
+//            zooListTableView.reloadData()
         }
         return cell
-
     }
-    
-    
 }
-
 
 extension ZooListView: UITableViewDelegate {
     
