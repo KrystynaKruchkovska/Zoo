@@ -22,13 +22,15 @@ class ImageDownloader: ImageDownloaderProtocol {
         self.imageCache = imageCache
     }
     
-    func download(with url: URL) -> UUID? {
-        if let image = imageCache.getImage(for: url) {
-            self.fetchedImage.send(image)
-          return nil
-        }
-        let uuid = UUID()
-            networkingEngine.downloadTaskPublisher(with: url)
+    func download(with url: URL) -> Future<UIImage, Never> {
+        
+        Future { [weak self] promise in
+            if let image = self?.imageCache.getImage(for: url) {
+                //            self.fetchedImage.send(image)
+                promise(.success(image))
+            }
+            let uuid = UUID()
+            self?.networkingEngine.downloadTaskPublisher(with: url)
                 .receive(on: DispatchQueue.main)
                 .sink { completion in
                     switch completion {
@@ -38,15 +40,17 @@ class ImageDownloader: ImageDownloaderProtocol {
                         print("Finished")
                     }
                 }
-                receiveValue: { [weak self] image in
-                    guard let image = image else {
-                        return
-                    }
-                    self?.fetchedImage.send(image)
-                    print("Image\(String(describing: image))")
-                }
-                .store(in: &cancellables)
-        return uuid
+        receiveValue: { image in
+            guard let image = image else {
+                return
+            }
+            promise(.success(image))
+//                                self?.fetchedImage.send(image)
+            print("Image\(String(describing: image))")
+        }
+        .store(in: &self!.cancellables)
+//            return uuid
+        }
     }
     
     func cancelTask(for uuid: UUID) {
