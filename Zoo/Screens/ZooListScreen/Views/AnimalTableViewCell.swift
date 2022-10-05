@@ -12,8 +12,8 @@ class AnimalTableViewCell: UITableViewCell {
 
    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
        super.init(style: style, reuseIdentifier: reuseIdentifier)
-//       mainStackView.addArrangedSubview()
        self.addSubview(mainStackView)
+       progressIndicator.startAnimating()
 
    }
 
@@ -25,6 +25,7 @@ class AnimalTableViewCell: UITableViewCell {
    override func layoutSubviews() {
        super.layoutSubviews()
        progressIndicator.frame = CGRect(x: imgView.frame.width/2, y: imgView.frame.height/2, width: 20, height: 20)
+       imgView.addSubview(progressIndicator)
        setupConstraints()
     }
     
@@ -65,6 +66,7 @@ class AnimalTableViewCell: UITableViewCell {
 
     let progressIndicator: UIActivityIndicatorView = {
         let progressIndicator = UIActivityIndicatorView()
+        progressIndicator.color = .green
         return progressIndicator
     }()
 
@@ -89,11 +91,10 @@ class AnimalTableViewCell: UITableViewCell {
 
 extension AnimalTableViewCell {
    func downloadImage(with url: URL) {
-//       imageDowloadingID =
        imageDownloader?.download(with: url)
                .receive(on: DispatchQueue.main)
                .sink(receiveValue: { [weak self] image in
-                   print("HERE", image.description)
+                   self?.progressIndicator.stopAnimating()
                    self?.imgView.image = image
                })
                .store(in: &tokens)

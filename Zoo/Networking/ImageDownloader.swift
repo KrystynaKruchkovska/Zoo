@@ -14,7 +14,6 @@ class ImageDownloader: ImageDownloaderProtocol {
     private let networkingEngine: NetworkingEngineProtocol
     private let imageCache: ImageCacheProtocol
     private var cancellables = Set<AnyCancellable>()
-    private (set) var fetchedImage = PassthroughSubject<UIImage, Never>()
 
     init(networkingEngine: NetworkingEngineProtocol,
         imageCache: ImageCacheProtocol) {
@@ -26,12 +25,10 @@ class ImageDownloader: ImageDownloaderProtocol {
         
         Future { [weak self] promise in
             if let image = self?.imageCache.getImage(for: url) {
-                //            self.fetchedImage.send(image)
-                promise(.success(image))
+                return promise(.success(image))
             }
-            let uuid = UUID()
-            self?.networkingEngine.downloadTaskPublisher(with: url)
-                .receive(on: DispatchQueue.main)
+            self?.networkingEngine.dataTaskPublisher(with: url)
+                .receive(on: RunLoop.main)
                 .sink { completion in
                     switch completion {
                     case .failure(let err):
@@ -40,23 +37,24 @@ class ImageDownloader: ImageDownloaderProtocol {
                         print("Finished")
                     }
                 }
-        receiveValue: { image in
+        receiveValue: { [weak self] image in
             guard let image = image else {
                 return
             }
-            promise(.success(image))
-//                                self?.fetchedImage.send(image)
+            self?.imageCache.setImage(image, for: url)
             print("Image\(String(describing: image))")
+            return promise(.success(image))
         }
         .store(in: &self!.cancellables)
-//            return uuid
         }
     }
     
     func cancelTask(for uuid: UUID) {
-        runningRequests[uuid]?.cancel()
-        runningRequests.removeValue(forKey: uuid)
+//        runningRequests[uuid]?.cancel()
+//        runningRequests.removeValue(forKey: uuid)
     }
+    
+    
     
 }
 extension ImageDownloader {

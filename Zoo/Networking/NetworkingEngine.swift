@@ -11,7 +11,7 @@ import UIKit
 
 protocol NetworkingEngineProtocol {
     func request<T:Codable>(endpoint: Endpoint, type: T.Type) -> AnyPublisher<[T], Error>
-    func downloadTaskPublisher(with url: URL) -> AnyPublisher<UIImage?, Never>
+    func dataTaskPublisher(with url: URL) -> AnyPublisher<UIImage?, Never>
 }
 
 class NetworkingEngine: NetworkingEngineProtocol {
@@ -44,7 +44,7 @@ class NetworkingEngine: NetworkingEngineProtocol {
                 .eraseToAnyPublisher()
     }
     
-    func downloadTaskPublisher(with url: URL) -> AnyPublisher<UIImage?, Never> {
+    func dataTaskPublisher(with url: URL) -> AnyPublisher<UIImage?, Never> {
         return URLSession.shared.dataTaskPublisher(for: url)
             .map { UIImage(data: $0.data) }
             .catch { error in return Just(nil) }

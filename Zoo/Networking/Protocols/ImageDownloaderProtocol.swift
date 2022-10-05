@@ -9,9 +9,7 @@ import UIKit
 import Combine
 
 protocol ImageDownloaderProtocol {
-    var fetchedImage: PassthroughSubject<UIImage, Never> { get }
 
-//    func download(with url: URL) -> UUID?
     func download(with url: URL) -> Future<UIImage, Never>
     func cancelTask(for uuid: UUID)
 }
