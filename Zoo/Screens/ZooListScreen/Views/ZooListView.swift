@@ -12,7 +12,6 @@ protocol ZooListViewDelegate: AnyObject {
 }
 
 class ZooListView: UIView {
-    
     private var animals: Animals = []
     private var imageDownloader: ImageDownloaderProtocol?
     weak var delegate: ZooListViewDelegate? = nil
@@ -54,15 +53,14 @@ class ZooListView: UIView {
     func update(with animals: Animals, imageDownloader: ImageDownloaderProtocol) {
         self.animals = animals
         self.imageDownloader = imageDownloader
+        if zooListTableView.refreshControl?.isRefreshing == true {
+            zooListTableView.refreshControl?.endRefreshing()
+        }
         zooListTableView.reloadData()
     }
     
     @objc func didPullToRefresh() {
         delegate?.onDidPullToRefreshData()
-        print("Start refrefhing")
-        DispatchQueue.main.async {
-            self.zooListTableView.refreshControl?.endRefreshing()
-        }
     }
 }
 
@@ -79,7 +77,6 @@ extension ZooListView: UITableViewDataSource {
         cell.label.text = animal.name
         if let imgUrl =  URL(string: animal.imageLink) {
             cell.update(with: imgUrl, imageDownloader: imageDownloader)
-//            zooListTableView.reloadData()
         }
         return cell
     }

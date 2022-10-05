@@ -31,6 +31,7 @@ class AnimalListViewModel: AnimalListViewModelProtocol {
     var zooEndpoint: Endpoint = ZooEndpoint.getSearchResult(numberOfItems: 10)
     
     func fetchAnimals() {
+        animals.removeAll()
         networkingEngine.request(endpoint: zooEndpoint,type: Animal.self)
             .receive(on: DispatchQueue.main)
             .sink { completion in
