@@ -27,14 +27,13 @@ class AnimalDetailsViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
-        self.view = DetailsView()
+        self.view = DetailsView(animal: viewModel.animal)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
         setupImage()
-        // Do any additional setup after loading the view.
     }
     
 
