@@ -20,7 +20,6 @@ class DetailsView: UIView {
         updateStackView(with: UIScreen.main.bounds.size)
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -31,8 +30,8 @@ class DetailsView: UIView {
     }
     
     lazy var mainStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [imageView, label])
-        stackView.distribution = .fillProportionally
+        let stackView = UIStackView(arrangedSubviews: [imageView, label, emptyView])
+        stackView.distribution = .fill
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -40,11 +39,15 @@ class DetailsView: UIView {
     
     var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    let emptyView: UIView = {
+        return UIView()
     }()
     
     private var label: UILabel = {
@@ -108,7 +111,7 @@ class DetailsView: UIView {
             
         case .landscapeRight:
             self.mainStackView.axis = .horizontal
-            self.mainStackView.alignment = .top
+            self.mainStackView.alignment = .center
             
         default:
             self.mainStackView.axis = .vertical
