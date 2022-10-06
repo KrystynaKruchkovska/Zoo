@@ -24,9 +24,6 @@ class AnimalListViewModel: AnimalListViewModelProtocol {
     
     init(networkingEngine: NetworkingEngineProtocol) {
         self.networkingEngine = networkingEngine
-//        let imageCache = DefaultImageCache()
-//        imageDownloader = ImageDownloader(networkSession: networkingEngine, imageCache: imageCache)
-        
     }
     var zooEndpoint: Endpoint = ZooEndpoint.getSearchResult(numberOfItems: 10)
     

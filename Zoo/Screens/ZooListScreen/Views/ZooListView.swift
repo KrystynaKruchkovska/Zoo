@@ -9,6 +9,7 @@ import UIKit
 
 protocol ZooListViewDelegate: AnyObject {
     func onDidPullToRefreshData()
+    func didSelect(_ animal: Animal)
 }
 
 class ZooListView: UIView {
@@ -37,6 +38,7 @@ class ZooListView: UIView {
     var zooListTableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.rowHeight = 200
+        tableView.separatorStyle = .none
         tableView.backgroundColor = .white
         tableView.register(AnimalTableViewCell.self, forCellReuseIdentifier: AnimalTableViewCell.reusableIdentifier)
         tableView.refreshControl = UIRefreshControl()
@@ -84,4 +86,7 @@ extension ZooListView: UITableViewDataSource {
 
 extension ZooListView: UITableViewDelegate {
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.didSelect(animals[indexPath.row])
+    }
 }

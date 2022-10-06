@@ -22,7 +22,6 @@ class ImageDownloader: ImageDownloaderProtocol {
     }
     
     func download(with url: URL) -> Future<UIImage, Never> {
-        
         Future { [weak self] promise in
             if let image = self?.imageCache.getImage(for: url) {
                 return promise(.success(image))

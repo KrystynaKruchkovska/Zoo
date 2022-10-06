@@ -10,9 +10,8 @@ import Combine
 
 protocol ZooListViewControllerDelegate: AnyObject {
     
-    func ZooListViewControllerDelegateDidSelect(_ zooListViewController: ZooListViewController, animal: Animal)
+    func zooListViewControllerDelegateDidSelect(_ zooListViewController: ZooListViewController, animal: Animal)
 }
-
 
 final class ZooListViewController: UIViewController {
     weak var delegate: ZooListViewControllerDelegate?
@@ -64,6 +63,10 @@ final class ZooListViewController: UIViewController {
 }
 
 extension ZooListViewController: ZooListViewDelegate {
+    func didSelect(_ animal: Animal) {
+        delegate?.zooListViewControllerDelegateDidSelect(self, animal: animal)
+    }
+    
        func onDidPullToRefreshData() {
            viewModel.fetchAnimals()
        }

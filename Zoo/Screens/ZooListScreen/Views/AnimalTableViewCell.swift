@@ -4,7 +4,6 @@ import Combine
 class AnimalTableViewCell: UITableViewCell {
 
     private var imageDownloader: ImageDownloaderProtocol?
-    private var imageDowloadingID: UUID?
     private var tokens = Set<AnyCancellable>()
     static var reusableIdentifier: String {
         return String(describing: self)
@@ -15,7 +14,6 @@ class AnimalTableViewCell: UITableViewCell {
        self.addSubview(mainStackView)
        progressIndicator.startAnimating()
    }
-
        // Configure the view for the selected state
    required init?(coder: NSCoder) {
        fatalError("init(coder:) has not been implemented")
@@ -30,10 +28,6 @@ class AnimalTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         imgView.image = nil
-        guard let imageDowloadingID = imageDowloadingID else {
-            return
-        }
-        imageDownloader?.cancelTask(for: imageDowloadingID)
         progressIndicator.startAnimating()
     }
 
@@ -41,7 +35,7 @@ class AnimalTableViewCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [imgView, label])
         stackView.axis = .horizontal
         stackView.distribution = .fill
-        stackView.alignment = .leading
+        stackView.alignment = .center
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
@@ -53,6 +47,9 @@ class AnimalTableViewCell: UITableViewCell {
         imgView.layer.cornerRadius = 5
         imgView.clipsToBounds = true
         imgView.translatesAutoresizingMaskIntoConstraints = false
+        imgView.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        imgView.setContentHuggingPriority(.defaultLow, for: .vertical)
+
         return imgView
     }()
 
@@ -76,14 +73,13 @@ class AnimalTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            mainStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            mainStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            mainStackView.topAnchor.constraint(equalTo: self.topAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            mainStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            mainStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            mainStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            mainStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             
             imgView.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8),
             imgView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8),
-            imgView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
 }
@@ -93,8 +89,8 @@ extension AnimalTableViewCell {
        imageDownloader?.download(with: url)
                .receive(on: DispatchQueue.main)
                .sink(receiveValue: { [weak self] image in
-                   self?.progressIndicator.stopAnimating()
                    self?.imgView.image = image
+                   self?.progressIndicator.stopAnimating()
                })
                .store(in: &tokens)
    }

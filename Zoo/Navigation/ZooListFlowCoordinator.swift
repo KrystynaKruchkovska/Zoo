@@ -8,7 +8,7 @@
 import UIKit
 
 final class ZooListFlowCoordinator: FlowCoordinatorProtocol {
-    
+
     let navigationController: UINavigationController
     var rootViewController: UIViewController
     
@@ -41,8 +41,21 @@ private extension ZooListFlowCoordinator {
     func showZooListVC(animated: Bool = true) {
         let viewModel = AnimalListViewModel(networkingEngine: dependencyProvider.networkingEngine)
         let zooListVC = ZooListViewController(viewModel: viewModel, imageDownloader: dependencyProvider.imageDownloader)
-//        viewController.delegate = self
+        zooListVC.delegate = self
 
         navigationController.setViewControllers([zooListVC], animated: animated)
+    }
+    
+    func showDetailAnimalView(with animal: Animal, animated: Bool = true) {
+        let viewModel = AnimalDetailsViewModel(animal: animal, imageDownloader: dependencyProvider.imageDownloader)
+        let viewController = AnimalDetailsViewController(viewModel: viewModel)
+        
+        navigationController.pushViewController(viewController, animated: animated)
+    }
+}
+
+extension ZooListFlowCoordinator: ZooListViewControllerDelegate {
+    func zooListViewControllerDelegateDidSelect(_ zooListViewController: ZooListViewController, animal: Animal) {
+        showDetailAnimalView(with: animal)
     }
 }
