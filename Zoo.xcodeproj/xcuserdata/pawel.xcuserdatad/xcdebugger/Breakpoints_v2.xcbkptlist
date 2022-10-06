@@ -23,16 +23,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6E0F1225-BDAD-4DAA-B40B-5FC9916638DB"
+            uuid = "83168573-5F96-4A48-9E23-022DF6BC932E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Zoo/Screens/DetailsScreen/DetailsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "layoutSubviews()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69B722BC-D9DC-4ED6-AAFF-82E61397E2A5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zoo/Screens/DetailsScreen/DetailsView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "setupTextViewText()"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "updateStackView(with:)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

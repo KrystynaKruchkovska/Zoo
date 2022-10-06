@@ -32,8 +32,14 @@ class AnimalDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .lightGray
         setupImage()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate { context in
+            self.customView.updateStackView(with: size)
+        }
     }
     
 
