@@ -88,7 +88,9 @@ extension AnimalTableViewCell {
    func downloadImage(with url: URL) {
        imageDownloader?.download(with: url)
                .receive(on: DispatchQueue.main)
-               .sink(receiveValue: { [weak self] image in
+               .sink(receiveCompletion: { error in
+    
+               }, receiveValue: { [weak self] image in
                    self?.imgView.image = image
                    self?.progressIndicator.stopAnimating()
                })

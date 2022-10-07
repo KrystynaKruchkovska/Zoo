@@ -21,7 +21,7 @@ class ImageDownloader: ImageDownloaderProtocol {
         self.imageCache = imageCache
     }
     
-    func download(with url: URL) -> Future<UIImage, Never> {
+    func download(with url: URL) -> Future<UIImage, Error> {
         Future { [weak self] promise in
             if let image = self?.imageCache.getImage(for: url) {
                 return promise(.success(image))
@@ -32,6 +32,7 @@ class ImageDownloader: ImageDownloaderProtocol {
                     switch completion {
                     case .failure(let err):
                         print("Error is \(err.localizedDescription)")
+                        return promise(.failure(err))
                     case .finished:
                         print("Finished")
                     }
@@ -56,8 +57,4 @@ class ImageDownloader: ImageDownloaderProtocol {
     
     
 }
-extension ImageDownloader {
-    var num: String {
-        return ""
-    }
-}
+

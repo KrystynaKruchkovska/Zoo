@@ -10,6 +10,6 @@ import Combine
 
 protocol ImageDownloaderProtocol {
 
-    func download(with url: URL) -> Future<UIImage, Never>
+    func download(with url: URL) -> Future<UIImage, Error>
     func cancelTask(for uuid: UUID)
 }

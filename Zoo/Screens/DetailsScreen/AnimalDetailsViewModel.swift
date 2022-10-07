@@ -29,17 +29,17 @@ class AnimalDetailsViewModel: AnimalDetailsViewModelProtocol {
         Future { [weak self] promise in
             
             guard let self = self else {
-                return
+                return promise(.success(nil))
             }
             guard let imgUrl = URL(string: self.animal.imageLink) else {
                 return promise(.success(nil))
             }
             self.imageDownloader.download(with: imgUrl)
-                .sink { image in
-                    return promise(.success(image))
-                }.store(in: &self.tokens)
+                .sink(receiveCompletion: { error in
+                    return promise(.success(nil))
+                }, receiveValue: { image in
+                    return  promise(.success(image))
+                }).store(in: &self.tokens)
         }
     }
-
-    
 }
